@@ -1,17 +1,21 @@
-<div id="<%= dom_id post %>">
-  <p>
-    <strong>Body:</strong>
-    <%= post.body %>
-  </p>
+<div id="<%= dom_id post %>" class="post <%= post.hidden ? "hidden" : "" %>">
+  <strong>
+    <% if post.author.present? %>
+      <%= post.author %>
+    <% else %>
+      anónima
+    <% end %>
+  </strong>
+  escribió
 
-  <p>
-    <strong>Author:</strong>
-    <%= post.author %>
-  </p>
-
-  <p>
-    <strong>Ip address:</strong>
+  <% if logged_in? %>
+    <div style="float: right">
     <%= post.ip_address %>
-  </p>
+    <div style="display:inline-block;">
+    <%= button_to (post.hidden ? "restaurar" : "esconder"), post, method: :delete %>
+    </div>
+    </div>
+  <% end %>
 
+  <%= post.body %>
 </div>

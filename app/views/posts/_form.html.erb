@@ -12,21 +12,16 @@
   <% end %>
 
   <div>
-    <%= form.label :body, style: "display: block" %>
+    <% #= form.label :body, style: "display: block" %>
     <%= form.rich_text_area :body %>
   </div>
 
   <div>
-    <%= form.label :author, style: "display: block" %>
+    <%= form.label :author, "Autora (opcional, dejar en blanco para publicar de forma anónima)", style: "display: block" %>
     <%= form.text_field :author %>
   </div>
 
   <div>
-    <%= form.label :ip_address, style: "display: block" %>
-    <%= form.text_field :ip_address %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit value: "Publicar" %>
   </div>
 <% end %>

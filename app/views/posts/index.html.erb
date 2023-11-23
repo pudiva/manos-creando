@@ -1,14 +1,21 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Posts</h1>
+<% if false %>
+  <p style="color: green"><%= notice %></p>
+<% end %>
 
 <div id="posts">
   <% @posts.each do |post| %>
     <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
   <% end %>
+
+  <div id="new-post" class="post">
+    <%= render 'form', post: @new_post %>
+  </div>
 </div>
 
-<%= link_to "New post", new_post_path %>
+<script>
+  document.addEventListener("trix-initialize", function () {
+    if (location.hash == "") {
+      location.hash = "#new-post"
+    }
+  });
+</script>
